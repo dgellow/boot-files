@@ -24,7 +24,7 @@
             (fn-log "Move files\n")
             (->> (reduce
                 (fn [fs [from to]]
-                  (util/info (format "• %s -> %s\n" from to))
+                  (fn-log (format "• %s -> %s\n" from to))
                   (try
                     (core/mv fs from to)
                     (catch java.lang.Exception e
@@ -50,9 +50,9 @@
               (next-handler fileset))
           (do
             (core/empty-dir! tmp)
-            (util/info "Copy files\n")
+            (fn-log "Copy files\n")
             (doseq [[from to] (seq files)]
-              (util/info (format "• %s -> %s\n" from to))
+              (fn-log (format "• %s -> %s\n" from to))
               (let [in-files (core/input-files fileset)
                     in-file (first (core/by-path [from] in-files))]
                 (when (not in-file)
