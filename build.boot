@@ -6,7 +6,7 @@
 
 (require '[adzerk.bootlaces :refer :all])
 
-(def +version+ "1.0.0")
+(def +version+ "1.0.1")
 
 (task-options!
   pom {:project     'dgellow/boot-files
