@@ -23,8 +23,13 @@ Add `dgellow/boot-files` to your `build.boot` dependencies and `require` the nam
 ## From `build.boot`, in a task
 
 ```clojure
-(deftask foo
+(deftask foo []
   (comp (move-files :files {"hello.txt" "foo/bar/new-hello.txt"
+                            "something.ext" "something-else.ext"})
+        (target)))
+
+(deftask bar []
+  (comp (copy-files :files {"hello.txt" "foo/bar/new-hello.txt"
                             "something.ext" "something-else.ext"})
         (target)))
 ```
